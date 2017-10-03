@@ -6,16 +6,21 @@
  */
 
 #include "Task.h"
+#include <iostream>
 
 Task::Task(unsigned char anId, unsigned char aMachineId, unsigned char aDuration) : id(anId), machineId(aMachineId), duration(aDuration), completed(0)
 {
-	// TODO Auto-generated constructor stub
-
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 Task::~Task()
 {
-	// TODO Auto-generated destructor stub
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Task::Task(const Task& aTask) : id(aTask.id), machineId(aTask.machineId), duration(aTask.duration), completed(aTask.completed)
+{
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 bool Task::isCompleted() const

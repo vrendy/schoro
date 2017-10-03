@@ -14,12 +14,12 @@
 
 Jobshop::Jobshop(unsigned char anJobs, unsigned char anMachines) : nJobs(anJobs), nMachines(anMachines)
 {
-	// TODO Auto-generated constructor stub
-
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Jobshop::~Jobshop() {
-	// TODO Auto-generated destructor stub
+Jobshop::~Jobshop()
+{
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 
@@ -55,17 +55,26 @@ unsigned char Jobshop::getMachineId(const Job& aJob) const //TODO REFACTOR
 
 void Jobshop::dispatch()
 {
-	std::map<unsigned char, unsigned char> jobMachineMap;
+	std::map<unsigned char, unsigned char> jobMachineMap;  // Map with job id and machine id to backtrack
 	unsigned char taskAssignedMachineList[nMachines] = {}; // Counts number of tasks assigned to the machine(id)
 
 	for(const auto& job : jobList)
 	{
-		taskAssignedMachineList[getMachineId(job)] += 1;
+		taskAssignedMachineList[getMachineId(job)] += 1;	//
 		jobMachineMap.emplace(std::make_pair(job.getId(), getMachineId(job)));
 	}
 
+
+
 	for(unsigned char i = 0; i < nMachines; ++i)
 	{
+		if(taskAssignedMachineList[i] > 1) // If more jobs want task to be executed on the same machine
+		{
+			// calculate slack for each job, subtrackt it from remainingJobTime,
+			// compare slacktimes, execute job with lowest
+			// processes timers
+			// thats all i think, not sure
+		}
 		std::cout << "Machine[" << (int)i << "]: " << (int)taskAssignedMachineList[i] << std::endl;
 	}
 

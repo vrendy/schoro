@@ -7,14 +7,21 @@
 
 #include "Job.h"
 
+#include <iostream>
+
 Job::Job(unsigned char anId) : id(anId)
 {
-	// TODO Auto-generated constructor stub
-
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Job::~Job() {
-	// TODO Auto-generated destructor stub
+Job::~Job()
+{
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Job::Job(const Job& aJob) : id(aJob.id), taskList(aJob.taskList)
+{
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Job::addTask(const Task& aTask)

@@ -16,6 +16,7 @@ class Job {
 public:
 	Job(unsigned char anId);
 	virtual ~Job();
+	Job(const Job& aJob);
 
 	void addTask(const Task& aTask);
 	unsigned short getRemainingJobTime() const;

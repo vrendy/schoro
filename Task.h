@@ -11,6 +11,7 @@
 class Task {
 public:
 	Task(unsigned char anId, unsigned char aMachineId, unsigned char aDuration);
+	Task(const Task& aTask);
 	virtual ~Task();
 
 	bool isCompleted() const;
