@@ -30,8 +30,8 @@ public:
 
 	short getCurrentTaskID()const;
 
-	void setJobID(const unsigned short aJobID);
-	unsigned short getJobID()const;
+	void setId(const unsigned short anId);
+	unsigned short getId()const;
 	Task& getTask(short getTask);
 
 	void incrementCurrentTask();
@@ -41,7 +41,7 @@ private:
 	std::vector<Task>taskList;
 	unsigned short currentTask;
 	unsigned short endTime;
-	unsigned short jobID;
+	unsigned short id;
 	unsigned short numberOfTasks;
 };
 

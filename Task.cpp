@@ -6,12 +6,13 @@
  */
 
 #include "Task.h"
+#include <iostream>
 
 
-Task::Task() : ES(0), LS(0), taskID(0), runtime(0), neededMachine(0), running(false){}
-Task::Task(const unsigned short aRuntime, const unsigned short aNeededMachine) : ES(0), LS(0), taskID(0), runtime(aRuntime), neededMachine(aNeededMachine), running(false){}
+Task::Task() : ES(0), LS(0), id(0), runtime(0), neededMachine(0), running(false){}
+Task::Task(const unsigned short aRuntime, const unsigned short aNeededMachine) : ES(0), LS(0), id(0), runtime(aRuntime), neededMachine(aNeededMachine), running(false){}
 
-Task::Task(const Task& aTask): ES(aTask.ES), LS(aTask.LS), taskID(aTask.taskID), runtime(aTask.runtime), neededMachine(aTask.neededMachine), running(aTask.running){
+Task::Task(const Task& aTask): ES(aTask.ES), LS(aTask.LS), id(aTask.id), runtime(aTask.runtime), neededMachine(aTask.neededMachine), running(aTask.running){
 }
 
 
@@ -23,7 +24,7 @@ Task& Task::operator=(Task& aTask){
 		neededMachine = aTask.neededMachine;
 		running = aTask.running;
 		runtime = aTask.runtime;
-		taskID = aTask.taskID;
+		id = aTask.id;
 	}
 	return *this;
 }
@@ -34,6 +35,8 @@ short Task::getES()const{
 }
 
 void Task::setES(const short aES){
+	//if(id == 0)
+		//std::cout << aES << std::endl;
 	ES = aES;
 }
 
@@ -70,10 +73,10 @@ void Task::setRunning(const bool aRunning){
 }
 
 
-unsigned short Task::getTaskID()const{
-	return taskID;
+unsigned short Task::getId()const{
+	return id;
 }
 
-void Task::setTaskID(unsigned short aTaskID){
-	taskID = aTaskID;
+void Task::setId(unsigned short anId){
+	id = anId;
 }

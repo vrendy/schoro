@@ -17,8 +17,8 @@ public:
 
 	Task& operator=(Task& aTask);
 
-	unsigned short getTaskID()const;
-	void setTaskID(const unsigned short aTaskID);
+	unsigned short getId()const;
+	void setId(const unsigned short anId);
 
 	short getES()const;
 	void setES(const short aES);
@@ -40,7 +40,7 @@ private:
 	short ES;
 	short LS;
 
-	unsigned short taskID;
+	unsigned short id;
 	unsigned short runtime;
 	unsigned short neededMachine;
 	bool running;

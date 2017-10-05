@@ -9,18 +9,18 @@
 
 #include <iostream>
 
-Job::Job() : currentTask(0), endTime(0), jobID(0), numberOfTasks(0){
+Job::Job() : currentTask(0), endTime(0), id(0), numberOfTasks(0){
 
 }
 
-Job::Job(const unsigned short aJobID) : currentTask(0), endTime(0), jobID(aJobID), numberOfTasks(0){}
+Job::Job(const unsigned short aJobID) : currentTask(0), endTime(0), id(aJobID), numberOfTasks(0){}
 
 
 /*
  * DESC: Voeg een taak toe aan de takenlijst
  */
 void Job::addTask(Task& aTask){
-	aTask.setTaskID(numberOfTasks);
+	aTask.setId(numberOfTasks);
 	taskList.push_back(aTask);
 
 	numberOfTasks++;
@@ -32,6 +32,8 @@ void Job::addTask(Task& aTask){
  * PARAM: currentStart, de waarde van de huidige eerst volgende starttijd,
  */
 void Job::calculateES(const unsigned short currentStart){
+	if(currentTask == 0)
+		std::cout << id << ": " << currentStart << std::endl;
 	for(unsigned short i = currentTask; i < taskList.size(); i++){
 		if(i == currentTask) { //Als het de eerste taak in de reeks is, hanteer de huidige earliest start time
 			taskList.at(i).setES(currentStart);
@@ -86,8 +88,8 @@ unsigned short Job::getFinishTime()const{
 }
 
 
-unsigned short Job::getJobID()const{
-	return jobID;
+unsigned short Job::getId()const{
+	return id;
 }
 
 
@@ -104,6 +106,6 @@ void Job::setEndTime(const unsigned short aEndTime){
 	endTime = aEndTime;
 }
 
-void Job::setJobID(const unsigned short aJobID){
-	jobID = aJobID;
+void Job::setId(const unsigned short aJobID){
+	id = aJobID;
 }

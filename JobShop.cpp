@@ -27,7 +27,7 @@ JobShop::JobShop(unsigned short aAantalMachines, unsigned short aNumberOfJobs) :
  * Voeg een job toe aan de job list, en verander zijn jobID
  */
 void JobShop::addJob(Job &aJob){
-	aJob.setJobID(numberOfJobs);
+	aJob.setId(numberOfJobs);
 	jobList.push_back(aJob);
 	numberOfJobs++;
 }
@@ -89,13 +89,13 @@ void JobShop::planTaken(){
 			//Taak is niet running, check of onze slack kleiner is dan die van de geplande taak
 			if((currentTaskInJob.getLS() - currentTaskInJob.getES()) < (plannedTask.getLS() - plannedTask.getES())){
 				//Slack van de huidige job is kleiner dan slack van geplande job, zet de huidige job op de machine.
-				std::pair<short, short>insertPair = std::make_pair(huidigeJob.getJobID(), currentTaskInJob.getTaskID());
+				std::pair<short, short>insertPair = std::make_pair(huidigeJob.getId(), currentTaskInJob.getId());
 				machineList[currentTaskInJob.getNeededMachine()] = insertPair;
 				continue;
 			}
 		} else {
 			//Plan de taak op deze machine
-			std::pair<short, short>insertPair = std::make_pair(huidigeJob.getJobID(), currentTaskInJob.getTaskID());
+			std::pair<short, short>insertPair = std::make_pair(huidigeJob.getId(), currentTaskInJob.getId());
 			machineList[currentTaskInJob.getNeededMachine()] = insertPair;
 			continue;
 		}
@@ -182,6 +182,6 @@ unsigned short JobShop::getLongestPath(){
 
 void JobShop::printRuntimes(){
 	for(Job& aJob : jobList){
-		std::cout << aJob.getJobID() << "\t" << aJob.getStartTime() << "\t" << aJob.getFinishTime() << std::endl;
+		std::cout << aJob.getId() << "\t" << aJob.getStartTime() << "\t" << aJob.getFinishTime() << std::endl;
 	}
 }
